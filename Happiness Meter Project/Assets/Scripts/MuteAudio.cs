@@ -69,6 +69,7 @@ public class MuteAudio : MonoBehaviour {
 			PlayerPrefs.SetString("isMuted", "false");
 			muteButtonText.text = "mute Audio";
 			audioSource.PlayOneShot(unmute);
+			audioSource.PlayOneShot(flatButton);
 
 			
 		}

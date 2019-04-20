@@ -15,6 +15,10 @@ public class ColorChange : MonoBehaviour {
 	public Color MinValColor = Color.red;
 
 
+	public void Start()
+	{
+		Fill.color = Color.Lerp(MinValColor, MaxValColor, (float)slider.value / MaxVal);
+	}
 
 	public void UpdateCounterBar()
 	{

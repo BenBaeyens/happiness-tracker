@@ -542,7 +542,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The Happiness Meter
+  m_Text: The Happiness Tracker
 --- !u!222 &2062108899
 CanvasRenderer:
   m_ObjectHideFlags: 0

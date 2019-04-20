@@ -52,14 +52,14 @@ public class AddEntryNew : MonoBehaviour
 			float[] tempcountArray = tempcount.Split('*').Select(Convert.ToSingle).ToArray();
 			for (int i = 0; i <= tempcountArray.Length - 1; i++)
 			{
-				happinessCount.Insert(0, tempcountArray[i]);
+				happinessCount.Add(tempcountArray[i]);
 			}
 
 			string tempdate = PlayerPrefs.GetString("LogDate");
 			string[] tempdateArray = tempdate.Split('*');
 			for (int i = 0; i <= tempdateArray.Length - 1; i++)
 			{
-				logDate.Insert(0, tempdateArray[i]);
+				logDate.Add(tempdateArray[i]);
 			}
 
 	
@@ -67,7 +67,7 @@ public class AddEntryNew : MonoBehaviour
 			string[] tempnoteArray = tempnote.Split('*');
 			for (int i =  0; i <= tempnoteArray.Length - 1; i++)
 			{
-				happinessNote.Insert(0, tempnoteArray[i]);
+				happinessNote.Add(tempnoteArray[i]);
 			}
 		
 
@@ -79,7 +79,6 @@ public class AddEntryNew : MonoBehaviour
 		Debug.Log(PlayerPrefs.GetString("HappinessCount"));
 
 	}
-
 	public void Entry()
 	{
 		dateYear = System.DateTime.Now.Year;
