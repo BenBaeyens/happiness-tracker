@@ -39,7 +39,7 @@ public class AddEntryNew : MonoBehaviour
 		happinessCount = new List<float>();
 		logDate = new List<string>();
 
-		historyParent.transform.position = new Vector3(historyParent.transform.position.x, historyParent.transform.position.y, 1);
+		//historyParent.transform.position = new Vector3(historyParent.transform.position.x, historyParent.transform.position.y, 1);
 	
 		string tempcount = PlayerPrefs.GetString("HappinessCount");
 
@@ -50,24 +50,24 @@ public class AddEntryNew : MonoBehaviour
 		else {
 			Debug.Log("Adding Old history");
 			float[] tempcountArray = tempcount.Split('*').Select(Convert.ToSingle).ToArray();
-			for (int i = tempcountArray.Length; i > 0; i--)
+			for (int i = 0; i <= tempcountArray.Length - 1; i++)
 			{
-				happinessCount.Insert(0, tempcountArray[i - 1]);
+				happinessCount.Insert(0, tempcountArray[i]);
 			}
 
 			string tempdate = PlayerPrefs.GetString("LogDate");
 			string[] tempdateArray = tempdate.Split('*');
-			for (int i = tempdateArray.Length; i > 0; i--)
+			for (int i = 0; i <= tempdateArray.Length - 1; i++)
 			{
-				logDate.Insert(0, tempdateArray[i - 1]);
+				logDate.Insert(0, tempdateArray[i]);
 			}
 
 	
 			string tempnote = PlayerPrefs.GetString("HappinessNote");
 			string[] tempnoteArray = tempnote.Split('*');
-			for (int i = tempnoteArray.Length; i > 0; i--)
+			for (int i =  0; i <= tempnoteArray.Length - 1; i++)
 			{
-				happinessNote.Insert(0, tempnoteArray[i - 1]);
+				happinessNote.Insert(0, tempnoteArray[i]);
 			}
 		
 
@@ -90,12 +90,12 @@ public class AddEntryNew : MonoBehaviour
 		dateMinute = System.DateTime.Now.Minute;
 		dateSecond = System.DateTime.Now.Second;
 
-		happinessNote.Insert(0, happinessNoteField.text);
+		happinessNote.Add(happinessNoteField.text);
 
 
 		happinessNoteField.text = "";
-		happinessCount.Insert(0, happinessCountSlider.value / 10);
-		logDate.Insert(0, (dateYear + "/" + dateMonth + "/" + dateDay + "@" + dateHour + ":" + dateMinute + ":" + dateSecond));
+		happinessCount.Add(happinessCountSlider.value / 10);
+		logDate.Add( (dateYear + "/" + dateMonth + "/" + dateDay + "@" + dateHour + ":" + dateMinute + ":" + dateSecond));
 
 		DataSave();
 
@@ -154,13 +154,12 @@ public class AddEntryNew : MonoBehaviour
 		InputField historyNote = GameObject.FindGameObjectWithTag("HistoryNote").GetComponent<InputField>();
 		historyNote.tag = "Untagged";
 
-		historyText.text = logDate[0].Replace("@", " at ") + ", with a happiness of: " + happinessCount[0];
-		historyNote.text = happinessNote[0];
+		historyText.text = logDate[logDate.Count - 1].Replace("@", " at ") + ", with a happiness of: " + happinessCount[happinessCount.Count - 1];
+		historyNote.text = happinessNote[happinessNote.Count - 1];
 
 		historyParent.transform.position = new Vector2(historyParent.position.x, historyParent.position.y - .5f);
 	
 		historyNote.gameObject.SetActive(false);
-		historyParent.gameObject.SetActive(false);
 
 	}
 
@@ -173,19 +172,19 @@ public class AddEntryNew : MonoBehaviour
 		else
 		{
 			Debug.Log(happinessCount.Count);
-				for (int i = happinessCount.Count; i > 0; i--)
+				for (int i = 0; i <= happinessCount.Count - 1; i++)
 			{
 
-				Instantiate(historyObject, new Vector2(0, -9.7f), Quaternion.identity, historyParent);
+				Instantiate(historyObject, new Vector3(0, -9.7f, 90f), Quaternion.identity, historyParent);
 				Text historyText = GameObject.FindGameObjectWithTag("HistoryText").GetComponent<Text>();
 				historyText.tag = "Untagged";
-				historyText.name = "historyText+" + (i - 1).ToString();
+				historyText.name = "historyText+" + (i).ToString();
 
 				InputField historyNote = GameObject.FindGameObjectWithTag("HistoryNote").GetComponent<InputField>();
 				
 				historyNote.tag = "Untagged";
-				historyText.text = logDate[i - 1].Replace("@", " at ") + ", with a happiness of: " + happinessCount[i - 1];
-				historyNote.text = happinessNote[i - 1];
+				historyText.text = logDate[i].Replace("@", " at ") + ", with a happiness of: " + happinessCount[i];
+				historyNote.text = happinessNote[i];
 
 
 				historyParent.transform.position = new Vector2(historyParent.position.x, historyParent.position.y - .5f);
@@ -196,6 +195,39 @@ public class AddEntryNew : MonoBehaviour
 
 		}
 
+	}
+	public void AfterRemoveAddOldHistory()
+	{
+		if (happinessCount.Count == 0)
+		{
+			print("There are no previous logs");
+		}
+		else
+		{
+			Debug.Log(happinessCount.Count);
+			for (int i = 0; i <= happinessCount.Count - 1; i++)
+			{
+
+				Instantiate(historyObject, new Vector3(0, 3.71f, 90f), Quaternion.identity, historyParent);
+				Text historyText = GameObject.FindGameObjectWithTag("HistoryText").GetComponent<Text>();
+				historyText.tag = "Untagged";
+				historyText.name = "historyText+" + (i).ToString();
+
+				InputField historyNote = GameObject.FindGameObjectWithTag("HistoryNote").GetComponent<InputField>();
+
+				historyNote.tag = "Untagged";
+				historyText.text = logDate[i].Replace("@", " at ") + ", with a happiness of: " + happinessCount[i];
+				historyNote.text = happinessNote[i];
+
+
+				historyParent.transform.position = new Vector2(historyParent.position.x, historyParent.position.y - .5f);
+
+				historyNote.gameObject.SetActive(false);
+
+			}
+
+		}
+
 
 		if (isRemovingEntry)
 			isRemovingEntry = false;
@@ -203,11 +235,13 @@ public class AddEntryNew : MonoBehaviour
 	}
 
 
+
 	public void RemoveEntry()
 	{
 		Debug.Log("attempting removing entry");
 
 		int tempnumber = int.Parse(EventSystem.current.currentSelectedGameObject.transform.parent.name.Substring(12));
+		Debug.Log(int.Parse(EventSystem.current.currentSelectedGameObject.transform.parent.name.Substring(12)));
 
 		happinessNote.RemoveAt(tempnumber);
 		happinessCount.RemoveAt(tempnumber);
@@ -219,8 +253,10 @@ public class AddEntryNew : MonoBehaviour
 		}
 
 		isRemovingEntry = true;
-		AddOldHistory();
+		AfterRemoveAddOldHistory();
 		DataSave();
+	
+	
 		Debug.Log("done");
 
 	}

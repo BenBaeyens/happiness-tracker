@@ -49,11 +49,6 @@ public class MuteAudio : MonoBehaviour {
 		
 	}
 
-	private void Update()
-	{
-		Debug.Log(isMuted);
-	}
-
 	public void MuteButton()
 	{
 		if(isMuted == false)
