@@ -7,7 +7,7 @@ It is designed to help people find out what brings value to their life, and cut 
 > An easy-to-use, fun app that helps you stay happy!
 
 ## Why I made the app
-I'm am really interested in living a happy life, and for a while I had been searching for a way to improve my happiness without changing my lifestyle around completely. This was the solution. It allows me to isolate things I like and don't like, and organise my day according to those things. I really think this app could be beneficial to other people as much as it is to me.
+I am really interested in living a happy life, and for a while I had been searching for a way to improve my happiness without changing my lifestyle around completely. This was the solution. It allows me to isolate things I like and don't like, and organise my day according to those things. I really think this app could be beneficial to other people as much as it is to me.
 
 ## What I learned from this project
 With every project I do, I hope to learn something from it. This was especially true for this project as this app is the first app I ever made.
@@ -31,7 +31,7 @@ Overall, this project was very helpful towards developing my skillset and expand
 
 - Something I would definitely do differently is to do proper research first. This is something I struggled with for a while and slowed down development drastically as I had to accomodate for the larger screenspace of some phones, which I wouldn't have to do if I had researched this beforehand.
 
-- Even though this project taught me a lot about maintaining a clean code structure, it is definitely something I would like to improve on, and I will most definitely do this in my next project.
+- Even though doing this project taught me a lot about maintaining a clean code structure, it is definitely something I would like to improve on, and I will most definitely do this in my next project.
 
 
 
