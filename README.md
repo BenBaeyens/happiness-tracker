@@ -1,5 +1,7 @@
 # Happiness Tracker App
+
 ###### Developed by Kjip.
+###### Published on Google Play store - April 24, 2019
 
 ## Short Description
 The Happiness Tracker App is an app that allows you to track how happy you are, why and when.
