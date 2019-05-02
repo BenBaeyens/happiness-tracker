@@ -12,5 +12,6 @@ public class NoteAdding : MonoBehaviour
 	private void Start()
 	{
 		noteField.lineType = InputField.LineType.MultiLineNewline;
+        TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
 	}
 }
