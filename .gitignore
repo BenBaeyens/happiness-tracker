@@ -34,3 +34,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Happiness Meter Project/Assets/Plugins.meta
+Happiness Meter Project/Assets/Plugins/*
